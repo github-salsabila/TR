@@ -34,113 +34,59 @@ struct data{
     char fct[15];
     int numOfItem;
     struct date tanggal;
-    //union {
-    //int tgl, bln, thn;
-    //};
+    union {
+     int tgl, bln, thn;
+    };
     int stock;
     long harga;
 };
 struct data obat[50];
 
 
-void login()
+void password()
 {
-	char username[10];
-	char password[10];
-	int i;
-	system("color B5");
-	gotoxy(35,5);
-	for(i=1; i <= 15; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254); // Kode tampilan kotak
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 17
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-	printf("\n");
-	gotoxy(50,7);
+    char username[100];
+    char password[100];
 
-	printf("Harap Login Terlebih Dahulu\n");
-	gotoxy(40,9);
-	printf("Masukkan username : ");
-	scanf("%s", username);
-	gotoxy(40,10);
-	printf("Masukkan password : ");
+    system("COLOR F4");
 
+    PASS:
+    	gotoxy (50, 11);
+    	printf ("~SILAHKAN LOGIN~");
+        gotoxy (45, 13);
+        printf ("Masukkan username :");
+        scanf ("%s", username);
+        gotoxy (45, 14);
+        printf ("Masukkan password :");
+        fflush (stdin);
 
-	for(i=0;i<6;i++)
-	{
-		password[i]=getch();
-		printf("*");
-	}
-	printf("\n");
-	gotoxy(35,12);
-	for(i=1; i <= 15; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254); // Kode tampilan kotak
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 17
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
+        char ch;
+        int i = 0;
+        while ((ch = (char)_getch()) != '\r')
+        {
+            password[i] = ch;
+            printf("*");
+            i++;
+        }
+        printf ("\n");
 
-	password[i]='\0';
-
-	if(strcmp(username,"admin")==0 && strcmp(password,"cantik")==0)
-	{
-    	printf("\n");
-    	gotoxy(55,14);
-		printf("~~LOGIN BERHASIL~~");
-		getch();
-		system("cls");
-	}
-	else
-	{
-    	printf("\n");
-    	gotoxy(57,14);
-		printf("LOGIN GAGAL! SILAKAN COBA LAGI");
-		getch();
-		system("cls");
-		login();
-	}
-	
-	
+        if ((strcmp(username, "admin") == 0) && (strcmp(password, "cantik") == 0))
+        {
+            gotoxy (43, 16);
+            printf ("~selamat anda berhasil masuk~\n\n\n\n\n\n");
+            getch();
+        }
+        else
+        {
+            gotoxy (33, 16);
+            printf ("Password dan username salah... silahkan ulang lagi\n");
+            system ("pause");
+            system("cls");
+            goto PASS;
+            
+        }
 }
+
 void header()
 {
     system ("cls");
@@ -150,6 +96,7 @@ void header()
     printf ("| NO. |     Nama      |    Jenis    |  Perusahaan  | Tanggal masuk | Stock |      Harga @     |\n");
     printf ("===============================================================================================\n");
 }
+
 
 void loading()
 {
@@ -179,27 +126,40 @@ void tambah_obat()
     char save = 'y';
 
     system ("cls");
+    gotoxy(10,5);
     printf ("===============================================================================================\n");
+    gotoxy(10,6);
     printf ("|                                         TAMBAH OBAT                                         |\n");
+    gotoxy(10,7);
     printf ("===============================================================================================\n");
+    gotoxy(10,8);
     printf ("|                                 MASUKKAN DATA OBAT DI BAWAH                                 |\n");
+    gotoxy(10,9);
     printf ("===============================================================================================\n");
+    gotoxy(10,10);
     printf ("Masukkan jumlah obat yang ingin di inputkan : ");
     scanf ("%d", &jml);
 
     obat[i].numOfItem = jml;
     for (i = 0; i < jml; i++){
+    	gotoxy(10, 11);
         printf ("Data obat ke-%d \n", i + 1);
+        gotoxy(10, 12);
         printf ("Nama obat                  : ");
         scanf (" %s", &obat[i].nama);
+        gotoxy(10, 13);
         printf ("Jenis obat                 : ");
         scanf ("%s", &obat[i].jenis);
+        gotoxy(10, 14);
         printf ("Perusahaan asal            : ");
         scanf ("%s", &obat[i].fct);
+        gotoxy(10, 15);
         printf ("Tanggal masuk (dd mm yyyy) : ");
         scanf (" %d %d %d", &obat[i].tanggal.tgl, &obat[i].tanggal.bln, &obat[i].tanggal.thn);
+        gotoxy(10, 16);
         printf ("Stock obat                 : ");
         scanf ("%d", &obat[i].stock);
+        gotoxy(10, 17);
         printf ("harga obat                 : ");
         scanf (" %d", &obat[i].harga);
 
@@ -213,14 +173,17 @@ void tambah_obat()
 
         gotoxy (15, 24);
         if (fwrite != 0)
-            printf("\nBerhasil disimpan\n");
-
+        {
+        	gotoxy (50,20);
+            printf("~Berhasil disimpan~\n");
+		}
         else
             printf("\npenyimpanan bermasalah");
         fclose(file);
     }
     i++;
 }
+
 
 void lihat_obat()
 {
@@ -239,11 +202,18 @@ void lihat_obat()
 void cari_obat()
 {
     int dataFound = 0;
+    printf ("Cari berdasarkan : ");
+    printf ("1. Nama Obat\n");
+    printf ("2. Jenis Obat\n");
+    printf ("3. Perusahaan asal\n");
+    printf ("Pilih salah satu : ");
+    scanf ("%d", &pilih);
 
-        system("cls");
-        printf("\nMasukkan nama obat : ");
-        scanf("%s", &nama);
+    switch (pilih){
 
+    case 1:
+
+        //loading program
         loading();
         printf ("\n\n");
             file = fopen("dataObat.dat", "r");
@@ -254,12 +224,12 @@ void cari_obat()
                 if (strcmp(obat[k].nama, nama) ==  0)
                 {
                     printf ("Data obat ke-%d \n", i + 1);
-                    printf ("Nama obat                  : %s \n", obat[k].nama);
-                    printf ("Jenis obat                 : %s \n", obat[k].jenis);
-                    printf ("Perusahaan asal            : %s \n", obat[k].fct);
-                    printf ("Tanggal masuk              : %d %d %d \n", obat[k].tanggal.tgl, &obat[k].tanggal.bln, &obat[k].tanggal.thn);
-                    printf ("Stock obat                 : %d \n", obat[k].stock);
-                    printf ("harga obat                 : %d \n", obat[k].harga);
+                    printf ("Nama obat                  : %s ", obat[k].nama);
+                    printf ("Jenis obat                 : %s ", obat[k].jenis);
+                    printf ("Perusahaan asal            : %s ", obat[k].fct);
+                    printf ("Tanggal masuk              : %d %d %d", obat[k].tanggal.tgl, &obat[k].tanggal.bln, &obat[k].tanggal.thn);
+                    printf ("Stock obat                 : %d ", obat[k].stock);
+                    printf ("harga obat                 : %d ", obat[k].harga);
                     printf("\n\n");
                     dataFound = 1;
                 }
@@ -270,10 +240,18 @@ void cari_obat()
             }
             fclose(file);
 
-    }
+        break;
+    //case 2
+      //  pabrik
+    //if
+      //  strcmp
+    //else if
 
-    
-/*
+
+    }
+}
+
+
 void animation()
 {
     int menu, i;
@@ -283,6 +261,7 @@ void animation()
     //program animasi
     int a, invoiceFound = 0;
     double b;
+    system("cls");
     char salam[] = "\t\t\t\t\t SELAMAT DATANG DI APOTEK TADIKA MESRA   ";
     int k, l;
 
@@ -296,118 +275,53 @@ void animation()
     }
     fflush(stdin);
 }
-*/
-void ubah_obat()
-{
-    int kode,i,new_stok;
-    float new_harga;
-    printf("Masukkan kode obat yang ingin diubah: ");
-    scanf("%d",&kode);
-    for(i=0;i<50;i++)
-    {
-    if(obat[i].kode==kode)
-    {
-    printf("Masukkan stok obat yang baru: ");
-    scanf("%d",&new_stok);
-    printf("Masukkan harga obat yang baru: ");
-    scanf("%f",&new_harga);
-    o[i].stok=new_stok;
-    obat[i].harga=new_harga;
-    printf("Data obat berhasil diubah\n");
-    break;
-    }
-    }
-    if(i==50)
-    printf("Maaf, obat tidak ditemukan");
-}
-    
-void hapus_obat()
-{
-    int kode,i;
-    printf("Masukkan kode obat yang ingin dihapus: ");
-    scanf("%d",&kode);
-    for(i=0;i<50;i++)
-    {
-    if(obat[i].kode==kode)
-    {
-    o[i].kode=0;
-    o[i].stok=0;
-    o[i].harga=0;
-    strcpy(o[i].nama,"");
-    printf("Data obat berhasil dihapus\n");
-    break;
-    }
-    }
-    if(i==50)
-    printf("Maaf, obat tidak ditemukan");
-    }
-
-    void urutkan_obat()
-    {
-    int i,j,kode;
-    char nama[30];
-    int stok;
-    float harga;
-    for(i=0;i<50;i++)
-    {
-    for(j=i+1;j<50;j++)
-    {
-    if(o[i].kode>o[j].kode)
-    {
-    kode=o[i].kode;
-    o[i].kode=o[j].kode;
-    o[j].kode=kode;
-
-    strcpy(nama,o[i].nama);
-    strcpy(o[i].nama,o[j].nama);
-    strcpy(o[j].nama,nama);
-
-    stok=o[i].stok;
-    o[i].stok=o[j].stok;
-    o[j].stok=stok;
-
-    harga=o[i].harga;
-    o[i].harga=o[j].harga;
-    o[j].harga=harga;
-    }
-    }
-    }
-    printf("Data obat berhasil diurutkan berdasarkan kode obat\n");
-}
 
 
 int main()
 {
     int choice;
 
-    //password();
-    //variabel menu
-    //animation();
+    password();
+    animation();
 
     do{
-        printf ("\n==============================================================================\n");
+    	printf("\n");
+    	gotoxy(20,5);
+        printf ("================================================================================\n");
+        printf("\n");
+    	gotoxy(20,6);
         printf ("|                               APOTEK TADIKA MESRA                            |\n");
+        printf("\n");
+    	gotoxy(20,7);
         printf ("================================================================================\n");
+    	gotoxy(20,8);
         printf ("|                                   HALAMAN MENU                               |\n");
+    	gotoxy(20,9);
         printf ("================================================================================\n");
+    	gotoxy(20,10);
+        printf ("|                                                                              |\n");
+    	gotoxy(20,11);
         printf ("| 1. Tambah data obat                                                          |\n");
+    	gotoxy(20,12);
         printf ("| 2. Lihat data obat                                                           |\n");
+    	gotoxy(20,13);
         printf ("| 3. Cari data obat                                                            |\n");
+    	gotoxy(20,14);
         printf ("| 4. Ubah data obat                                                            |\n");
+    	gotoxy(20,15);
         printf ("| 5. Urutkan data obat                                                         |\n");
+    	gotoxy(20,16);
         printf ("| 6. Hapus data obat                                                           |\n");
+    	gotoxy(20,17);
         printf ("| 7. Keluar                                                                    |\n");
+    	gotoxy(20,18);
         printf ("|                                                                              |\n");
-        printf ("|                                                                              |\n");
-        printf ("|                                                                              |\n");
-        printf ("|                                                                              |\n");
+    	gotoxy(20,19);
         printf ("================================================================================\n");
-        printf ("|                                                                              |\n");
-        printf ("================================================================================\n");
-        gotoxy (3, 18);
-        printf ("Masukkan pilihan: ");
-        scanf ("%d",&choice);
-
+    	gotoxy(20,20);
+        printf(" Masukkan pilihan : "); 
+		scanf("%d", &choice);                                    
+    
         switch(choice){
         case 1:
             tambah_obat();
