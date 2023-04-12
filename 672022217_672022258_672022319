@@ -90,10 +90,15 @@ void password()
 void header()
 {
     system ("cls");
+    gotoxy(10,5);
     printf ("===============================================================================================\n");
+    gotoxy(10,6);
     printf ("|                                           DATA OBAT                                         |\n");
+    gotoxy(10,7);
     printf ("===============================================================================================\n");
+    gotoxy(10,8);
     printf ("| NO. |     Nama      |    Jenis    |  Perusahaan  | Tanggal masuk | Stock |      Harga @     |\n");
+    gotoxy(10,9);
     printf ("===============================================================================================\n");
 }
 
@@ -192,6 +197,7 @@ void lihat_obat()
 
     header();
     for (k = 0; k < jml; k++){
+    	    gotoxy(10, 10);
             printf ("| %d  | %s     | %s   | %s   | %d %d %d  | %d   | %d     |\n", (k + 1), obat[k].nama,  obat[k].jenis,  obat[k].fct, obat[k].tanggal.tgl,  obat[k].tanggal.bln,  obat[k].tanggal.thn,  obat[k].stock,  obat[k].harga);
         }
 
