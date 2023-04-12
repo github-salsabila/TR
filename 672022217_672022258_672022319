@@ -170,7 +170,7 @@ void tambah_obat()
 
         printf ("\n");
     }
-
+    
     if (save == 'y' || save == 'Y')
     {
         file = fopen("dataObat.dat", "a+"); //selain file dapat ditulis file juga dapat dibaca
@@ -365,6 +365,7 @@ int main()
             printf("\n\nMaaf, pilihan yang anda masukkan salah. Silakan coba lagi.");
             getch();
             break;
+	    
         }
         system ("cls");
     }while(choice!=7);
