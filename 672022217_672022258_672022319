@@ -354,10 +354,14 @@ int main()
             getch();
             break;
         case 7:
+	    system("cls");
+	    gotoxy(35,14);
             printf("\n\nTerima kasih telah menggunakan program ini!");
             getch();
             break;
         default:
+	    system("cls");
+	    gotoxy(35,14);
             printf("\n\nMaaf, pilihan yang anda masukkan salah. Silakan coba lagi.");
             getch();
             break;
