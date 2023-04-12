@@ -281,7 +281,62 @@ void ubah_obat()
     }
     if(i==50)
     printf("Maaf, obat tidak ditemukan");
+}
+    
+void hapus_obat()
+{
+    int kode,i;
+    printf("Masukkan kode obat yang ingin dihapus: ");
+    scanf("%d",&kode);
+    for(i=0;i<50;i++)
+    {
+    if(o[i].kode==kode)
+    {
+    o[i].kode=0;
+    o[i].stok=0;
+    o[i].harga=0;
+    strcpy(o[i].nama,"");
+    printf("Data obat berhasil dihapus\n");
+    break;
     }
+    }
+    if(i==50)
+    printf("Maaf, obat tidak ditemukan");
+    }
+
+    void urutkan_obat()
+    {
+    int i,j,kode;
+    char nama[30];
+    int stok;
+    float harga;
+    for(i=0;i<50;i++)
+    {
+    for(j=i+1;j<50;j++)
+    {
+    if(o[i].kode>o[j].kode)
+    {
+    kode=o[i].kode;
+    o[i].kode=o[j].kode;
+    o[j].kode=kode;
+
+    strcpy(nama,o[i].nama);
+    strcpy(o[i].nama,o[j].nama);
+    strcpy(o[j].nama,nama);
+
+    stok=o[i].stok;
+    o[i].stok=o[j].stok;
+    o[j].stok=stok;
+
+    harga=o[i].harga;
+    o[i].harga=o[j].harga;
+    o[j].harga=harga;
+    }
+    }
+    }
+    printf("Data obat berhasil diurutkan berdasarkan kode obat\n");
+}
+
 
 int main()
 {
