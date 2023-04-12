@@ -248,14 +248,14 @@ void ubah_obat()
     scanf("%d",&kode);
     for(i=0;i<50;i++)
     {
-    if(o[i].kode==kode)
+    if(obat[i].kode==kode)
     {
     printf("Masukkan stok obat yang baru: ");
     scanf("%d",&new_stok);
     printf("Masukkan harga obat yang baru: ");
     scanf("%f",&new_harga);
     o[i].stok=new_stok;
-    o[i].harga=new_harga;
+    obat[i].harga=new_harga;
     printf("Data obat berhasil diubah\n");
     break;
     }
@@ -271,7 +271,7 @@ void hapus_obat()
     scanf("%d",&kode);
     for(i=0;i<50;i++)
     {
-    if(o[i].kode==kode)
+    if(obat[i].kode==kode)
     {
     o[i].kode=0;
     o[i].stok=0;
