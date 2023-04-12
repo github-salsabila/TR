@@ -93,11 +93,6 @@ void header()
     printf ("===============================================================================================\n");
 }
 
-void screen()
-{
-
-}
-
 void loading()
 {
     //loading program
@@ -185,19 +180,14 @@ void lihat_obat()
 
 void cari_obat()
 {
+   void cari_obat()
+{
     int dataFound = 0;
-    printf ("Cari berdasarkan : ");
-    printf ("1. Nama Obat\n");
-    printf ("2. Jenis Obat\n");
-    printf ("3. Perusahaan asal\n");
-    printf ("Pilih salah satu : ");
-    scanf ("%d", &pilih);
 
-    switch (pilih){
+        system("cls");
+        printf("\nMasukkan nama pelanggan : ");
+        scanf("%s", &nama);
 
-    case 1:
-
-        //loading program
         loading();
         printf ("\n\n");
             file = fopen("dataObat.dat", "r");
@@ -208,12 +198,12 @@ void cari_obat()
                 if (strcmp(obat[k].nama, nama) ==  0)
                 {
                     printf ("Data obat ke-%d \n", i + 1);
-                    printf ("Nama obat                  : %s ", obat[k].nama);
-                    printf ("Jenis obat                 : %s ", obat[k].jenis);
-                    printf ("Perusahaan asal            : %s ", obat[k].fct);
-                    printf ("Tanggal masuk              : %d %d %d", obat[k].tanggal.tgl, &obat[k].tanggal.bln, &obat[k].tanggal.thn);
-                    printf ("Stock obat                 : %d ", obat[k].stock);
-                    printf ("harga obat                 : %d ", obat[k].harga);
+                    printf ("Nama obat                  : %s \n", obat[k].nama);
+                    printf ("Jenis obat                 : %s \n", obat[k].jenis);
+                    printf ("Perusahaan asal            : %s \n", obat[k].fct);
+                    printf ("Tanggal masuk              : %d %d %d \n", obat[k].tanggal.tgl, &obat[k].tanggal.bln, &obat[k].tanggal.thn);
+                    printf ("Stock obat                 : %d \n", obat[k].stock);
+                    printf ("harga obat                 : %d \n", obat[k].harga);
                     printf("\n\n");
                     dataFound = 1;
                 }
@@ -224,17 +214,8 @@ void cari_obat()
             }
             fclose(file);
 
-        break;
-    //case 2
-      //  pabrik
-    //if
-      //  strcmp
-    //else if
-
-
     }
-}
-
+    
 /*
 void animation()
 {
