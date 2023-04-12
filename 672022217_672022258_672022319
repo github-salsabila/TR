@@ -259,6 +259,29 @@ void animation()
     fflush(stdin);
 }
 */
+void ubah_obat()
+{
+    int kode,i,new_stok;
+    float new_harga;
+    printf("Masukkan kode obat yang ingin diubah: ");
+    scanf("%d",&kode);
+    for(i=0;i<50;i++)
+    {
+    if(o[i].kode==kode)
+    {
+    printf("Masukkan stok obat yang baru: ");
+    scanf("%d",&new_stok);
+    printf("Masukkan harga obat yang baru: ");
+    scanf("%f",&new_harga);
+    o[i].stok=new_stok;
+    o[i].harga=new_harga;
+    printf("Data obat berhasil diubah\n");
+    break;
+    }
+    }
+    if(i==50)
+    printf("Maaf, obat tidak ditemukan");
+    }
 
 int main()
 {
