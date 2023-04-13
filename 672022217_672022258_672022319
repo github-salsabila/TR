@@ -257,6 +257,46 @@ void cari_obat()
     }
 }
 
+void hapus_obat()
+{
+    char deleteObat[15];
+    int flag = 0;
+
+    system ("cls");
+    gotoxy(10,5);
+    printf ("===============================================================================================\n");
+    gotoxy(10,6);
+    printf ("|                                          HAPUS OBAT                                         |\n");
+    gotoxy(10,7);
+    printf ("===============================================================================================\n");
+    gotoxy(10,8);
+    printf ("|                                 MASUKKAN NAMA OBAT YANG DIHAPUS                              |\n");
+    gotoxy(10,9);
+    printf ("===============================================================================================\n");
+    gotoxy(10,10);
+    printf("Masukkan nama obat yang ingin dihapus: ");
+    scanf(" %s", deleteObat);
+
+    for (int i = 0; i < jml; i++){
+        if (strcmp(deleteObat, obat[i].nama) == 0){
+            for (int j = i; j < jml - 1; j++){
+                obat[j] = obat[j+1];
+            }
+            jml--;
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 1){
+        printf("\nObat dengan nama %s berhasil dihapus.\n", deleteObat);
+    }
+    else{
+        printf("\nObat dengan nama %s tidak ditemukan.\n", deleteObat);
+    }
+
+    system("pause");
+}
+
 
 void animation()
 {
@@ -350,7 +390,7 @@ int main()
             getch();
             break;
         case 6:
-            //hapus_obat();
+            hapus_obat();
             getch();
             break;
         case 7:
