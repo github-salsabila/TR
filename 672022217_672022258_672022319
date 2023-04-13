@@ -38,7 +38,7 @@ struct data{
     int stock;
     long harga;
 };
-struct data obat[50]
+struct data obat[50];
 
 void password()
 {
@@ -130,7 +130,7 @@ void password()
         printf("LOGIN GAGAL! SILAKAN COBA LAGI");
         getch();
         system("cls");
-        login();
+        password();
     }
 }
 
