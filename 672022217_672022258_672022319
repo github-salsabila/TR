@@ -42,98 +42,41 @@ struct data obat[50];
 
 void password()
 {
-    char username[10];
-    char password[10];
-    int i;
-    for(i=1; i <= 15; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254); // Kode tampilan kotak
-        Sleep (5);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (300);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (50);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (300);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 17
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    printf("\n");
-    gotoxy(50,7);
+    char username[100];
+    char password[100];
 
-    printf("Harap Login Terlebih Dahulu\n");
-    gotoxy(40,9);
-    printf("Masukkan username : ");
-    scanf("%s", username);
-    gotoxy(40,10);
-    printf("Masukkan password : ");
-           
-    for(i=0;i<6;i++);
-    {
-        password[i]=getch();
-        printf("*");
-    }
-    printf("\n");
-    gotoxy(35,12);
-    for(i=1; i <= 15; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254); // Kode tampilan kotak
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 15
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }
-    for(i=1; i <= 10; i++) // Perulangan kotak loading 17
-    {
-        printf("%c", 254);
-        Sleep (10);
-    }      
-           
-    password[i]='\0';
+    PASS:
+        gotoxy (40, 13);
+        printf ("masukkan username :");
+        scanf ("%s", username);
+        gotoxy (40, 14);
+        printf ("masukkan password :");
+        fflush (stdin);
 
-    if(strcmp(username,"admin")==0 && strcmp(password,"cantik")==0)
-    {
-        printf("\n");
-        gotoxy(55,14);
-        printf("~~LOGIN BERHASIL~~");
-        getch();
-        system("cls");
-    }
-    else
-    {
-        printf("\n");
-        gotoxy(57,14);
-        printf("LOGIN GAGAL! SILAKAN COBA LAGI");
-        getch();
-        system("cls");
-        password();
-    }
+        char ch;
+        int i = 0;
+        while ((ch = (char)_getch()) != '\r')
+        {
+            password[i] = ch;
+            printf("*");
+            i++;
+        }
+        printf ("\n");
+
+        if ((strcmp(username, "FAZA") == 0) && (strcmp(password, "salsa") == 0))
+        {
+            gotoxy (38, 16);
+            printf ("selamat anda berhasil masuk\n");
+        }
+        else
+        {
+            gotoxy (30, 16);
+            printf ("Password dan username salah... silahkan ulang lagi\n");
+            system ("pause");
+            system ("cls");
+            goto PASS;
+        }
 }
-
 
 void header()
 {
