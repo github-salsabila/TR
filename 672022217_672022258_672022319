@@ -187,7 +187,7 @@ void tampilkan_obat()
     header();
     for (int i = 0; i < jml; i++)
     {
-        printf (" \t| %-3d | %-13s | %-10s | %-12s | %02d-%02d-%04d    | %-5d | Rp %-15ld |\n",
+        printf ("          | %-3d | %-13s | %-10s | %-12s | %02d-%02d-%04d    | %-5d | Rp %-14ld |\n",
             i + 1, obat[i].nama, obat[i].jenis, obat[i].fct, obat[i].tanggal.tgl, obat[i].tanggal.bln,
             obat[i].tanggal.thn, obat[i].stock, obat[i].harga);
     }
