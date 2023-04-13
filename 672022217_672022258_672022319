@@ -238,19 +238,18 @@ void tambah_obat()
 }
 
 
-void lihat_obat()
+void tampilkan_obat()
 {
-    system ("cls");
-    file = fopen ("dataObat", "r");
-
     header();
-    for (k = 0; k < jml; k++){
-    	    gotoxy(10, 10);
-            printf ("| %d  | %s     | %s   | %s   | %d %d %d  | %d   | %d     |\n", (k + 1), obat[k].nama,  obat[k].jenis,  obat[k].fct, obat[k].tanggal.tgl,  obat[k].tanggal.bln,  obat[k].tanggal.thn,  obat[k].stock,  obat[k].harga);
-        }
-
-
-    fclose(file);
+    for (int i = 0; i < jml; i++)
+    {
+    	gotoxy(10,10);
+        printf ("| %-3d | %-13s | %-10s | %-12s | %02d-%02d-%04d    | %-5d | Rp %-15ld |\n",
+            i + 1, obat[i].nama, obat[i].jenis, obat[i].fct, obat[i].tanggal.tgl, obat[i].tanggal.bln,
+            obat[i].tanggal.thn, obat[i].stock, obat[i].harga);
+    }
+    printf ("===============================================================================================\n");
+    system("pause");
 }
 
 void cari_obat() {
@@ -406,7 +405,7 @@ int main()
             getch();
             break;
         case 2:
-            lihat_obat();
+            tampilkan_obat();
             getch();
             break;
         case 3:
@@ -414,7 +413,7 @@ int main()
             getch();
             break;
         case 4:
-            //ubah_obat();
+            ubah_obat();
             getch();
             break;
         case 5:
