@@ -46,6 +46,7 @@ void password()
     char password[100];
 
     PASS:
+    	system("COLOR F4");
         gotoxy (40, 13);
         printf ("masukkan username :");
         scanf ("%s", username);
@@ -63,7 +64,7 @@ void password()
         }
         printf ("\n");
 
-        if ((strcmp(username, "FAZA") == 0) && (strcmp(password, "salsa") == 0))
+        if ((strcmp(username, "admin") == 0) && (strcmp(password, "cantik") == 0))
         {
             gotoxy (38, 16);
             printf ("selamat anda berhasil masuk\n");
@@ -186,12 +187,10 @@ void tampilkan_obat()
     header();
     for (int i = 0; i < jml; i++)
     {
-    	gotoxy(10,10);
-        printf ("| %-3d | %-13s | %-10s | %-12s | %02d-%02d-%04d    | %-5d | Rp %-15ld |\n",
+        printf ("\t| %-3d | %-13s | %-10s | %-12s | %02d-%02d-%04d    | %-5d | Rp %-15ld |\n",
             i + 1, obat[i].nama, obat[i].jenis, obat[i].fct, obat[i].tanggal.tgl, obat[i].tanggal.bln,
             obat[i].tanggal.thn, obat[i].stock, obat[i].harga);
     }
-    printf ("===============================================================================================\n");
     system("pause");
 }
 
@@ -271,6 +270,74 @@ void hapus_obat()
     }
 
     system("pause");
+}
+
+void ubah_obat()
+{
+int kodeObat;
+char save;
+system("cls");
+header();
+printf("\n");
+gotoxy(5,14);
+printf("Masukkan kode obat yang ingin diubah : ");
+scanf("%d", &kodeObat);
+
+for(i = 0; i < jml; i++)
+{
+    if(obat[i].kode[0] == kodeObat)
+    {
+        printf("\nData sebelum diubah :\n");
+        printf("Nama Obat     : %s\n", obat[i].nama);
+        printf("Jenis Obat    : %s\n", obat[i].jenis);
+        printf("Perusahaan    : %s\n", obat[i].fct);
+        printf("Jumlah Masuk  : %d-%d-%d\n", obat[i].tanggal.tgl, obat[i].tanggal.bln, obat[i].tanggal.thn);
+        printf("Stock Obat    : %d\n", obat[i].stock);
+        printf("Harga @ Obat  : %ld\n", obat[i].harga);
+
+        printf("\n\nSilahkan masukkan data baru\n");
+        printf("Nama Obat     : ");
+        fflush(stdin);
+        gets(obat[i].nama);
+        printf("Jenis Obat    : ");
+        gets(obat[i].jenis);
+        printf("Perusahaan    : ");
+        gets(obat[i].fct);
+        printf("Tanggal Masuk (dd-mm-yyyy): ");
+        scanf("%d-%d-%d", &obat[i].tanggal.tgl, &obat[i].tanggal.bln, &obat[i].tanggal.thn);
+        printf("Stock Obat    : ");
+        scanf("%d", &obat[i].stock);
+        printf("Harga @ Obat  : ");
+        scanf("%ld", &obat[i].harga);
+
+        printf("\n\nData berhasil diubah\n");
+        printf("Apakah Anda ingin menyimpan data baru ini? (y/n)");
+        fflush(stdin);
+        scanf("%c", &save);
+
+        if(save == 'y' || save == 'Y')
+        {
+            file = fopen("data_obat.txt", "w");
+            for(k = 0; k < jml; k++)
+            {
+                fprintf(file, "%d %s %s %s %d-%d-%d %d %ld\n", obat[k].kode[0], obat[k].nama, obat[k].jenis, obat[k].fct, obat[k].tanggal.tgl, obat[k].tanggal.bln, obat[k].tanggal.thn, obat[k].stock, obat[k].harga);
+            }
+            fclose(file);
+            printf("\nData berhasil disimpan!");
+        }
+        else
+        {
+            printf("\nData tidak disimpan!");
+        }
+
+        printf("\n\nTekan enter untuk kembali ke menu utama");
+        getch();
+        
+    }
+}
+printf("Data tidak ditemukan!");
+printf("\n\nTekan enter untuk kembali ke menu utama");
+getch();
 }
 
 
